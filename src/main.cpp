@@ -1,7 +1,7 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Inertial12           inertial      12              
+// Inertial12           inertial      12
 // ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
@@ -11,7 +11,6 @@
 /*    Description:  Trobotics Template File                                   */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
-
 
 #include "vex.h"
 #include "Autons.h"
@@ -35,18 +34,18 @@ competition Competition;
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
 
-void pre_auton(void) 
+void pre_auton(void)
 {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   initDriveMotors();
-  
+
   Controller1.ButtonR1.pressed(cycle_autons);
   Brain.Screen.pressed(cycle_autons);
   return;
 }
 
-void autonomous(void) 
+void autonomous(void)
 {
   auton_runner();
 }
@@ -60,14 +59,25 @@ void autonomous(void)
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void usercontrol(void) { 
-  //add local user control variables here:
+void usercontrol(void)
+{
+  //initialize odo things
+  InertialSensor.calibrate();
+  while (InertialSensor.isCalibrating())
+  {
+    wait(100, msec);
+  }
+  Brain.Screen.printAt(10, 50, "Hello V5");
+  Tracker.resetRotation();
+
+  // add local user control variables here:
   tester.setVelocity(100, pct);
 
-  //User control code here, inside the loop:
-  //remove existing demo code and replace with you own! Then remove this comment
-  while (1) {
-    if(Controller1.ButtonA.pressing())
+  // User control code here, inside the loop:
+  // remove existing demo code and replace with you own! Then remove this comment
+  while (1)
+  {
+    if (Controller1.ButtonA.pressing())
     {
       tester.spin(directionType::fwd, 100, velocityUnits::pct);
     }
@@ -75,18 +85,18 @@ void usercontrol(void) {
     {
       tester.stop(brakeType::coast);
     }
-    //leave the drive code here, it should work if you set up 
-    // DriveFunctionsConfig.h properly
+    // leave the drive code here, it should work if you set up
+    //  DriveFunctionsConfig.h properly
     userDrive();
 
     wait(20, msec); // Sleep the task for a short amount of time to
   }
 }
 
-
 // Main will set up the competition functions and callbacks.
 
-int main() {
+int main()
+{
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
@@ -95,7 +105,8 @@ int main() {
   pre_auton();
 
   // Prevent main from exiting with an infinite loop.
-  while (true) {
+  while (true)
+  {
     wait(100, msec);
   }
 }

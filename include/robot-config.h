@@ -10,6 +10,8 @@ extern brain Brain;
 extern controller Controller1;
 extern motor tester;
 
+extern encoder Tracker;
+extern inertial InertialSensor;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.

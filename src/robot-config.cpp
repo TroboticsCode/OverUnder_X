@@ -12,6 +12,10 @@ brain  Brain;
 controller Controller1 = controller(primary);
 motor tester = motor(PORT17, GREEN, true);
 
+
+encoder Tracker = encoder(Brain.ThreeWirePort.G);
+inertial InertialSensor = inertial(PORT11);
+
 // VEXcode generated functions
 
 
