@@ -20,8 +20,8 @@ void initDriveMotors()
 {
   for(uint8_t i = 0; i < numDriveMotors; i++)
   {
-    leftDriveMotors.push_back(motor(leftDrivePorts[i], GEAR_SET, false));
-    rightDriveMotors.push_back(motor(rightDrivePorts[i], GEAR_SET, true));
+    leftDriveMotors.push_back(motor(leftDrivePorts[i], GEAR_SET, true));
+    rightDriveMotors.push_back(motor(rightDrivePorts[i], GEAR_SET, false));
   }
 
   setDriveBrake(brakeType::coast);
@@ -167,7 +167,7 @@ static int    rot_minDT = 10;
 
 void moveRotate(int16_t degrees, int velocity, uint32_t timeOut)
 {
-  float arcLength = (degrees/360.0f) * CIRCUMFERENCE;
+  float arcLength = (degrees/360.0) * CIRCUMFERENCE;
   float rotFactor = ROTATION_FACTOR;
   float rotations = arcLength / rotFactor;
 

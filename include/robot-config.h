@@ -10,7 +10,6 @@ extern brain Brain;
 extern controller Controller1;
 extern motor tester;
 extern motor ArmLift;
-extern motor ArmLift2;
 extern motor intake;
 extern motor puncher;
 

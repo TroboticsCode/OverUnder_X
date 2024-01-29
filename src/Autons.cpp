@@ -1,7 +1,7 @@
-#include "vex.h"
 #include "Autons.h"
 #include "Functions.h"
 #include "DriveFunctionsConfig.h"
+#include "vex.h"
 
 //add function prototypes for auton routines here
 void noAuton();
@@ -30,11 +30,12 @@ void Auton1()
   //setRotGains(0.001, 0.001, 0.001, 20, 10); //update PID gains to tune robot
   //setLinGains(0.001, 0.001, 0.001, 20, 10);
 
-  Brain.Screen.print("I AM AUTON 1");
+  Brain.Screen.print("Match");
   Brain.Screen.newLine();
 
-  moveLinear(38, 100, 10000);
-  moveLinear(-10,100,10000);
+  moveLinear(32, 75, 10000);
+  wait(1, sec);
+  moveLinear(-10 ,50, 10000);
   
   //moveLinear(-48, 100, 100000);
 
@@ -44,6 +45,13 @@ void Auton1()
 
 void Auton2()
 {
-  Brain.Screen.print("I AM AUTON 2");
-  puncher.spin(directionType::rev, 50, velocityUnits::pct);
+  Brain.Screen.setCursor(10,1);
+  Brain.Screen.print("Programming Skills");
+  puncher.setVelocity(88, rpm);
+      puncher.spin(directionType::rev);
+  //moveRotate(45, 50, 10000);
+   // Brain.Screen.setCurso`r(11,1);
+  //Brain.Screen.print("Rotation Complete!!");
+  //moveLinear(80, 100, 10000);
+  //moveRotate(-45, 50, 10000);
 }

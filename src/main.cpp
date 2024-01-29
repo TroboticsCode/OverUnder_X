@@ -71,7 +71,7 @@ void usercontrol(void)
   Tracker.resetRotation();
 
   // add local user control variables here:
- ArmLift.setStopping(hold);
+ 
 
   // User control code here, inside the loop:
   // remove existing demo code and replace with you own! Then remove this comment
@@ -94,38 +94,45 @@ void usercontrol(void)
       if(Controller1.ButtonR1.pressing())
     {
       ArmLift.spin(directionType::fwd, 100, velocityUnits::pct);
-      ArmLift2.spin(directionType::rev, 100, velocityUnits::pct);
+      
     }
     else if(Controller1.ButtonR2.pressing())
     {
       ArmLift.spin(directionType::rev, 100, velocityUnits::pct);
-      ArmLift2.spin(directionType::fwd, 100, velocityUnits::pct);
+     
     }
     else
     {
       ArmLift.stop(brakeType::hold);
-      ArmLift2.stop(brakeType::hold);
+     
     }
+
+    if (Controller1.ButtonL1.pressing()){
+      ArmLift.setStopping(hold);
+    }
+    else{
+      ArmLift.setStopping(coast);
+    }
+    /*if (Controller1.ButtonUp.pressing);
+    {
+      /* code */
+  }
     
-    if(Controller1.ButtonL1.pressing())
-    {
-      intake.spin(directionType::fwd, 100, velocityUnits::pct);
-    }
-    else if(Controller1.ButtonL2.pressing())
-    {
-      intake.spin(directionType::rev, 100, velocityUnits::pct);
-    }
-    else
-    {
-      intake.stop(brakeType::coast);
-    }
+    
+    //if(ArmLift.position(degrees)<50){
+      //ArmLift.setStopping(coast);
+    //}
+    //if(ArmLift.position(degrees)>50){
+     // ArmLift.setStopping(hold);
+   // }
+    
     // leave the drive code here, it should work if you set up
     //  DriveFunctionsConfig.h properly
     userDrive();
 
     wait(20, msec); // Sleep the task for a short amount of time to
   }
-}
+
 
 // Main will set up the competition functions and callbacks.
 

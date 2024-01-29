@@ -1,7 +1,7 @@
 {
 	"project": {
 		"name": "SpinUp_5690T",
-		"slot": 6,
+		"slot": 2,
 		"description": "This shows the file structure for user functions, autonomous, and switcher",
 		"platform": "V5",
 		"creationDate": "Sat, 06 Jan 2024 19:53:29 GMT",

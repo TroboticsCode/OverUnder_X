@@ -55,7 +55,7 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 #endif
 
 #ifdef ARCADE_CONTROL
-  #define HORIZONTALAXIS Axis4
+  #define HORIZONTALAXIS Axis1
   #define VERTICALAXIS Axis3
 #elif defined TANK_CONTROL
   #define LEFTAXIS Axis3
@@ -75,8 +75,8 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
  * (from wheel center to wheel center) of 
  * your chassis here in inches
  */
- #define CHASSIS_WIDTH    15.55f
- #define CHASSIS_LENGTH   15.55f
+ #define CHASSIS_WIDTH    12
+ #define CHASSIS_LENGTH   12
 
 #define HYPOTENUSE sqrt(pow(CHASSIS_WIDTH,2) + pow(CHASSIS_LENGTH,2))
 #define RADIUS  HYPOTENUSE/2.0f
@@ -85,15 +85,15 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 /*     Wheel Size 
  * uncomment the size of drive wheel you are using
  */
-#define WHEEL_SIZE    4.0f
-//#define WHEEL_SIZE  2.75f
+//#define WHEEL_SIZE    4.0f
+#define WHEEL_SIZE  3.25f
 
 /*     Gear Ratio 
 * Enter the gear ratio of your drive
 * this is not the same as the motor gear set
 * Leave as 1 if you have a direct drive
 */
-#define GEAR_RATIO 1.0f
+#define GEAR_RATIO 0.6f
 
 /*     ROTATION_FACTOR 
  * this is a constant ratio
@@ -111,11 +111,11 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 #define GREEN ratio18_1
 
 //#define GEAR_SET    RED
-//#define GEAR_SET    BLUE
-#define GEAR_SET    GREEN
+#define GEAR_SET    BLUE
+//#define GEAR_SET    GREEN
 
 //#define PID
-//#define GYRO
+#define GYRO
 
 #ifdef PID
   void setLinGains(double kP, double kI, double kD, double slewRate, int minDT);
@@ -124,7 +124,7 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 
 #ifdef GYRO
   extern inertial myGyro;
-  #define GYRO_PORT PORT19
+  #define GYRO_PORT PORT9
 #endif
 
 #endif
