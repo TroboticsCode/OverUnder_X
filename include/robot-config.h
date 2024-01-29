@@ -9,6 +9,10 @@ extern brain Brain;
 // in robot-config.cpp
 extern controller Controller1;
 extern motor tester;
+extern motor ArmLift;
+extern motor ArmLift2;
+extern motor intake;
+extern motor puncher;
 
 extern encoder Tracker;
 extern inertial InertialSensor;

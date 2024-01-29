@@ -40,7 +40,7 @@ void pre_auton(void)
   vexcodeInit();
   initDriveMotors();
 
-  Controller1.ButtonR1.pressed(cycle_autons);
+  Controller1.ButtonX.pressed(cycle_autons);
   Brain.Screen.pressed(cycle_autons);
   return;
 }
@@ -71,19 +71,53 @@ void usercontrol(void)
   Tracker.resetRotation();
 
   // add local user control variables here:
-  tester.setVelocity(100, pct);
+ ArmLift.setStopping(hold);
 
   // User control code here, inside the loop:
   // remove existing demo code and replace with you own! Then remove this comment
   while (1)
   {
-    if (Controller1.ButtonA.pressing())
+   if(Controller1.ButtonY.pressing()){
+      puncher.setVelocity(88, rpm);
+      puncher.spin(directionType::rev);
+      
+    }
+
+   if(Controller1.ButtonB.pressing()){
+     puncher.setVelocity(44, rpm);
+      puncher.spin(directionType::rev);
+   }
+    if(Controller1.ButtonA.pressing()){
+      puncher.stop();
+    }
+
+      if(Controller1.ButtonR1.pressing())
     {
-      tester.spin(directionType::fwd, 100, velocityUnits::pct);
+      ArmLift.spin(directionType::fwd, 100, velocityUnits::pct);
+      ArmLift2.spin(directionType::rev, 100, velocityUnits::pct);
+    }
+    else if(Controller1.ButtonR2.pressing())
+    {
+      ArmLift.spin(directionType::rev, 100, velocityUnits::pct);
+      ArmLift2.spin(directionType::fwd, 100, velocityUnits::pct);
     }
     else
     {
-      tester.stop(brakeType::coast);
+      ArmLift.stop(brakeType::hold);
+      ArmLift2.stop(brakeType::hold);
+    }
+    
+    if(Controller1.ButtonL1.pressing())
+    {
+      intake.spin(directionType::fwd, 100, velocityUnits::pct);
+    }
+    else if(Controller1.ButtonL2.pressing())
+    {
+      intake.spin(directionType::rev, 100, velocityUnits::pct);
+    }
+    else
+    {
+      intake.stop(brakeType::coast);
     }
     // leave the drive code here, it should work if you set up
     //  DriveFunctionsConfig.h properly

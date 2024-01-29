@@ -33,15 +33,17 @@ void Auton1()
   Brain.Screen.print("I AM AUTON 1");
   Brain.Screen.newLine();
 
-  moveLinear(48, 100, 10000);
-  moveLinear(-48, 100, 100000);
+  moveLinear(38, 100, 10000);
+  moveLinear(-10,100,10000);
+  
+  //moveLinear(-48, 100, 100000);
 
-  moveRotate(720, 100, 100000);
-  moveRotate(-720, 100, 100000);
+//  moveRotate(720, 100, 100000);
+//  moveRotate(-720, 100, 100000);
 }
 
 void Auton2()
 {
   Brain.Screen.print("I AM AUTON 2");
-
+  puncher.spin(directionType::rev, 50, velocityUnits::pct);
 }

@@ -10,8 +10,8 @@ brain  Brain;
 
 // VEXcode device constructors
 controller Controller1 = controller(primary);
-motor tester = motor(PORT17, GREEN, true);
-
+motor ArmLift = motor(PORT7, RED, true);
+motor puncher = motor(PORT8, RED, true);
 
 encoder Tracker = encoder(Brain.ThreeWirePort.G);
 inertial InertialSensor = inertial(PORT11);

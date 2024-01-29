@@ -40,8 +40,8 @@ void initDriveMotors();
  *  looking forward
  */
 //update drive motor ports here - front ports, then middle, then rear
-static int32_t leftDrivePorts[] = {PORT1, PORT2};
-static int32_t rightDrivePorts[] = {PORT4, PORT5};
+static int32_t leftDrivePorts[] = {PORT4, PORT5, PORT6};
+static int32_t rightDrivePorts[] = {PORT1, PORT2, PORT3};
 
 static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 
