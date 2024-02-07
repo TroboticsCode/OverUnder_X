@@ -61,7 +61,7 @@ void autonomous(void)
 
 void usercontrol(void)
 {
-  //initialize odo things
+  // initialize odo things
   InertialSensor.calibrate();
   while (InertialSensor.isCalibrating())
   {
@@ -71,68 +71,65 @@ void usercontrol(void)
   Tracker.resetRotation();
 
   // add local user control variables here:
- 
 
   // User control code here, inside the loop:
   // remove existing demo code and replace with you own! Then remove this comment
   while (1)
   {
-   if(Controller1.ButtonY.pressing()){
+    // leave the drive code here, it should work if you set up
+    //  DriveFunctionsConfig.h properly
+    userDrive();
+    if (Controller1.ButtonY.pressing())
+    {
       puncher.setVelocity(88, rpm);
       puncher.spin(directionType::rev);
-      
     }
 
-   if(Controller1.ButtonB.pressing()){
-     puncher.setVelocity(44, rpm);
+    if (Controller1.ButtonB.pressing())
+    {
+      puncher.setVelocity(44, rpm);
       puncher.spin(directionType::rev);
-   }
-    if(Controller1.ButtonA.pressing()){
+    }
+    if (Controller1.ButtonA.pressing())
+    {
       puncher.stop();
     }
 
-      if(Controller1.ButtonR1.pressing())
+    if (Controller1.ButtonR1.pressing())
     {
       ArmLift.spin(directionType::fwd, 100, velocityUnits::pct);
-      
     }
-    else if(Controller1.ButtonR2.pressing())
+    else if (Controller1.ButtonR2.pressing())
     {
       ArmLift.spin(directionType::rev, 100, velocityUnits::pct);
-     
     }
     else
     {
       ArmLift.stop(brakeType::hold);
-     
     }
 
-    if (Controller1.ButtonL1.pressing()){
+    if (Controller1.ButtonL1.pressing())
+    {
       ArmLift.setStopping(hold);
     }
-    else{
+    else
+    {
       ArmLift.setStopping(coast);
     }
     /*if (Controller1.ButtonUp.pressing);
     {
       /* code */
   }
-    
-    
-    //if(ArmLift.position(degrees)<50){
-      //ArmLift.setStopping(coast);
-    //}
-    //if(ArmLift.position(degrees)>50){
-     // ArmLift.setStopping(hold);
-   // }
-    
-    // leave the drive code here, it should work if you set up
-    //  DriveFunctionsConfig.h properly
-    userDrive();
 
-    wait(20, msec); // Sleep the task for a short amount of time to
-  }
+  // if(ArmLift.position(degrees)<50){
+  // ArmLift.setStopping(coast);
+  //}
+  // if(ArmLift.position(degrees)>50){
+  // ArmLift.setStopping(hold);
+  // }
 
+  wait(20, msec); // Sleep the task for a short amount of time to
+}
 
 // Main will set up the competition functions and callbacks.
 

@@ -47,8 +47,37 @@ void Auton2()
 {
   Brain.Screen.setCursor(10,1);
   Brain.Screen.print("Programming Skills");
+
+  //Launch from start position
   puncher.setVelocity(88, rpm);
-      puncher.spin(directionType::rev);
+  puncher.spin(directionType::rev);
+  wait(3, sec);
+  puncher.stop();
+
+  //move forward to clear bar
+  moveLinear(6, 25, 1000);
+  moveStop(brake);
+  //move to drive under bar
+  moveRotate(45, 50, 1000);
+  moveLinear(12, 50, 1000);
+  moveRotate(-30, 50, 1000);
+  moveLinear(67, 100, 1000);
+/*
+  //rotate to face goal
+  moveRotate(-45, 50, 1000);
+  //approach goal
+  moveLinear(23, 100, 1000);
+  moveLinear(-12, 100, 1000);
+
+  //rotate to drive to other side of goal
+  moveRotate(-35, 50, 1000);
+  moveLinear(24, 100, 1000);
+
+  //face goal and score
+  moveRotate(90, 50, 1000);
+  moveLinear(12, 100, 1000);
+  moveLinear(-12, 100, 1000);*/
+
   //moveRotate(45, 50, 10000);
    // Brain.Screen.setCurso`r(11,1);
   //Brain.Screen.print("Rotation Complete!!");

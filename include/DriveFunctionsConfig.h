@@ -115,7 +115,7 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 //#define GEAR_SET    GREEN
 
 //#define PID
-#define GYRO
+//#define GYRO
 
 #ifdef PID
   void setLinGains(double kP, double kI, double kD, double slewRate, int minDT);
