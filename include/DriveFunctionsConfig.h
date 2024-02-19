@@ -40,8 +40,10 @@ void initDriveMotors();
  *  looking forward
  */
 //update drive motor ports here - front ports, then middle, then rear
+//Below is the actual 5690X config. Uncomment before using on 5690X
 static int32_t leftDrivePorts[] = {PORT4, PORT5, PORT6};
 static int32_t rightDrivePorts[] = {PORT1, PORT2, PORT3};
+
 
 static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 
@@ -114,8 +116,8 @@ static const uint8_t numDriveMotors = sizeof(leftDrivePorts)/sizeof(int32_t);
 #define GEAR_SET    BLUE
 //#define GEAR_SET    GREEN
 
-//#define PID
-//#define GYRO
+#define PID
+#define GYRO
 
 #ifdef PID
   void setLinGains(double kP, double kI, double kD, double slewRate, int minDT);

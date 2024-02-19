@@ -7,8 +7,8 @@
 #include "DriveFunctionsConfig.h"
 using namespace vex;
 
-void updateDriveMotors(int leftDriveVal, int rightDriveVal);
-void updateDriveMotorVolts(int leftVoltage, int rightVoltage);
+void updateDriveMotors(float leftDriveVal, float rightDriveVal);
+void updateDriveMotorVolts(float leftVoltage, float rightVoltage);
 void setDriveBrake(brakeType brake_type);
 float getMotorAvgRotations(vector<motor> motorGroup);
 void resetDriveRotations(void);
@@ -24,13 +24,13 @@ void initDriveMotors()
     rightDriveMotors.push_back(motor(rightDrivePorts[i], GEAR_SET, false));
   }
 
-  setDriveBrake(brakeType::coast);
+  setDriveBrake(brakeType::brake);
 
+
+}
 #ifdef GYRO
   inertial myGyro = inertial(GYRO_PORT);
 #endif
-}
-
 ////////////////User Drive Functions/////////////////////////
 void userDrive(void)
 {
@@ -263,7 +263,7 @@ void moveRotate(int16_t degrees, int velocity, uint32_t timeOut)
 #endif
 }
 
-void updateDriveMotors(int leftDriveVal, int rightDriveVal)
+void updateDriveMotors(float leftDriveVal, float rightDriveVal)
 {
   for(uint8_t i = 0; i < numDriveMotors; i++)
   {
@@ -272,7 +272,7 @@ void updateDriveMotors(int leftDriveVal, int rightDriveVal)
   }
 }
 
-void updateDriveMotorVolts(int leftVoltage, int rightVoltage)
+void updateDriveMotorVolts(float leftVoltage, float rightVoltage)
 {
   for(uint8_t i = 0; i < numDriveMotors; i++)
   {

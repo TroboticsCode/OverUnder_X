@@ -81,13 +81,13 @@ void usercontrol(void)
     userDrive();
     if (Controller1.ButtonY.pressing())
     {
-      puncher.setVelocity(88, rpm);
+      puncher.setVelocity(100, rpm);
       puncher.spin(directionType::rev);
     }
 
     if (Controller1.ButtonB.pressing())
     {
-      puncher.setVelocity(44, rpm);
+      puncher.setVelocity(88, rpm);
       puncher.spin(directionType::rev);
     }
     if (Controller1.ButtonA.pressing())
@@ -116,9 +116,12 @@ void usercontrol(void)
     {
       ArmLift.setStopping(coast);
     }
-    /*if (Controller1.ButtonUp.pressing);
+    if (Controller1.ButtonUp.pressing())
     {
-      /* code */
+      ArmLift.setStopping(hold);
+      ArmLift.setVelocity(100, percent);
+      ArmLift.spinTo(-135, rotationUnits::deg);
+    }
   }
 
   // if(ArmLift.position(degrees)<50){
